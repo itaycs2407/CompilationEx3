@@ -10,7 +10,6 @@
 // Handler Function Defenition 
 
 int tokenMatcher(eTOKENS token, FILE* yyout);
-Token* lookAHead(int num);
 void defineToketToName(eTOKENS token, char* str[]);
 void getFirstToken();
 void errorHandler(int* followArray, int size);
@@ -41,7 +40,7 @@ Attributes* parse_FUNC_PROTOTYPE(FILE* yyout);
 void parse_STMT_LIST(FILE* yyout);
 void parse_PARAM_LIST(FILE* yyout);
 void parse_PARAM(FILE* yyout);
-void parse_VAR_DEC_LIST_(FILE* yyout);
+void parse_VAR_DEC_LIST(FILE* yyout);
 void parse_COMP_STMT(FILE* yyout);
 void parse_ARGS(FILE* yyout);
 void parse_MOMO(FILE* yyout);

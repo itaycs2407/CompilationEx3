@@ -1,0 +1,155 @@
+﻿  Parsers.c
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(73,43): warning C4047: '!=': 'int' differs in levels of indirection from 'Token *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(112,15): warning C4129: ',': unrecognized character escape sequence
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(115,15): warning C4129: ';': unrecognized character escape sequence
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(344,49): warning C4133: 'function': incompatible types - from 'char *' to 'FILE *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(355,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(355,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(355,17): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(355,17): message : the missing variadic argument 3 is required by format string '%d'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(335,40): warning C4101: 'tokenIntNumberZ': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(335,24): warning C4101: 'tokenIntNumber': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(828,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(828,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(828,17): message : placeholders and their parameters expect 7 variadic arguments, but 6 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(828,17): message : the missing variadic argument 7 is required by format string '%d'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(871,57): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(871,57): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(872,56): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(872,56): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(873,52): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(873,52): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(874,61): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(874,61): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(875,44): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(875,44): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(876,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(876,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(877,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(877,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(878,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(878,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(879,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(879,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(880,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(880,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(881,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(881,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 3 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 5 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 7 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 8 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 9 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 10 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 11 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 12 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): message : placeholders and their parameters expect 13 variadic arguments, but 12 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(883,17): message : the missing variadic argument 13 is required by format string '%d'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(907,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(907,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(907,17): message : placeholders and their parameters expect 7 variadic arguments, but 2 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(907,17): message : the missing variadic argument 3 is required by format string '%s'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(922,72): warning C4101: 'tokenParenthesesClose': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(961,17): warning C4566: character represented by universal-character-name '\u025B' cannot be represented in the current code page (1252)
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1004,17): warning C4477: 'fprintf' : format string '%d' requires an argument of type 'int', but variadic argument 6 has type 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1004,187): warning C4474: 'fprintf' : too many arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1004,187): message : placeholders and their parameters expect 6 variadic arguments, but 7 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1029,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1029,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1029,17): message : placeholders and their parameters expect 5 variadic arguments, but 4 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1029,17): message : the missing variadic argument 5 is required by format string '%d'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1079,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1079,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1079,17): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1079,17): message : the missing variadic argument 3 is required by format string '%d'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1110,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1110,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1110,17): message : placeholders and their parameters expect 7 variadic arguments, but 6 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1110,17): message : the missing variadic argument 7 is required by format string '%d'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1089,166): warning C4101: 'tokenOPE': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1089,116): warning C4101: 'tokenOPLE': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1089,141): warning C4101: 'tokenOPGE': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1089,154): warning C4101: 'tokenOPG': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1089,129): warning C4101: 'tokenOPL': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1089,178): warning C4101: 'tokenOPNE': unreferenced local variable
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1148,61): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1148,61): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1149,44): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1149,44): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1150,57): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1150,57): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1151,52): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1151,52): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1152,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1152,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1153,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1153,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1154,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1154,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1155,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1155,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1156,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1156,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1157,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1157,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 3 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 5 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 7 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 8 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 9 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,237): warning C4474: 'fprintf' : too many arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1159,237): message : placeholders and their parameters expect 10 variadic arguments, but 11 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1194,57): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1194,57): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1195,56): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1195,56): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1196,52): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1196,52): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1197,61): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1197,61): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1198,44): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1198,44): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1199,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1199,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1200,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1200,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1201,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1201,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1202,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1202,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1203,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1203,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1204,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1204,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 3 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 5 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 7 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 8 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 9 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 10 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 11 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 12 has type 'int'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): message : placeholders and their parameters expect 13 variadic arguments, but 12 were provided
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1206,17): message : the missing variadic argument 13 is required by format string '%d'
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(37): warning C4715: 'tokenMatcher': not all control paths return a value
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(306): warning C4715: 'parse_VAR_DEC_': not all control paths return a value
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(360): warning C4715: 'parse_DIM_SIZES_': not all control paths return a value
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(383): warning C4715: 'parse_TYPE': not all control paths return a value
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(330): warning C4716: 'parse_DIM_SIZES': must return a value
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(833): warning C4715: 'parse_FACTOR': not all control paths return a value
+C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\asdasdasda\Parsers.c(1121): warning C4716: 'parse_EXPR': must return a value
+  asdasdasda.vcxproj -> C:\Users\eyal.z\Downloads\Matala3\Matala3\TestCompi\asdasdasda\Debug\asdasdasda.exe

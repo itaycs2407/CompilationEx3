@@ -1,0 +1,10 @@
+﻿  Parsers.c
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(56,22): warning C4477: 'fprintf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'char *'
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(56,135): warning C4474: 'fprintf' : too many arguments passed for format string
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(56,135): message : placeholders and their parameters expect 1 variadic arguments, but 2 were provided
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(706,38): warning C4020: 'match': too many actual parameters
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(775,43): warning C4047: '==': 'Token *' differs in levels of indirection from 'int'
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(790,43): warning C4047: '==': 'Token *' differs in levels of indirection from 'int'
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(805,43): warning C4047: '==': 'Token *' differs in levels of indirection from 'int'
+D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Compiler\Parsers.c(820,43): warning C4047: '==': 'Token *' differs in levels of indirection from 'int'
+  Compiler.vcxproj -> D:\Study\קומפילציה קורס חוזר\חלק 3\201555430_300508348_203379086_(1)\201555430_300508348_203379086\Compiler\Debug\Compiler.exe

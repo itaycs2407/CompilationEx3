@@ -1,0 +1,23 @@
+Students ids:
+1. 201555430
+2. 300508348
+3. 203379086
+Students names:
+1. Moshe Yakobovich
+2. Sefi Piscon
+3. Lior Trbolsy
+
+Operating system:
+Windows10 - 64Bit
+
+Development enviroment:
+Microsoft Visual Studio Community 2019
+Version 16.3.5
+
+Notes:
+Might need to disabele error for sprintf,fopen etc. 
+In order to do that follow the next steps:
+1. Open the Property Pages dialog for your the project by right clicking on the project name in the soulotion explored and choosing Property "
+2. Select the Configuration "Properties" > "C/C++" > "Advanced page".
+3. Edit the "Disable Specific Warnings" property to add 4996.
+4. Choose OK to apply your changes.

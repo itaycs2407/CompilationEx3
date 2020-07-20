@@ -1,0 +1,12 @@
+Duplicate declaration of the same name, line: 7
+Duplicate declaration of the same name, line: 13
+Duplicate declaration of the same name, line: 19
+Duplicate declaration of the same name, line: 25
+Duplicate declaration of the same name, line: 31
+Duplicate declaration of the same name, line: 37
+Type inconsistency between the left side and the right side at line: 51
+Type inconsistency between the left side and the right side at line: 53
+Type inconsistency between the left side and the right side at line: 54
+Type inconsistency between the left side and the right side at line: 62
+Type inconsistency between the left side and the right side at line: 66
+Type inconsistency between the left side and the right side at line: 69

@@ -301,6 +301,7 @@ int parse_VAR_DEC_(FILE* file) {
 	}
 }
 
+
 int parse_DIM_SIZES(FILE* file) {
 	fprintf(file, "parse_DIM_SIZES -> int_num DIM_SIZES_ \n");
 	tokenMatcher(INT_NUMBER, file);
@@ -539,7 +540,6 @@ void parse_PARAM_LIST_(FILE* file) {
 	current_token = next_token();
 	switch (current_token->kind) {
 	case COMMA_SIGN:
-		current_token = back_token();
 		fprintf(file, "PARAM_LIST_ ->, PARAM PARAM_LIST_ \n");
 		parse_PARAM(file);
 		parse_PARAM_LIST_(file);

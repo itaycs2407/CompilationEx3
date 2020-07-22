@@ -301,7 +301,6 @@ int parse_VAR_DEC_(FILE* file) {
 	}
 }
 
-
 int parse_DIM_SIZES(FILE* file) {
 	fprintf(file, "parse_DIM_SIZES -> int_num DIM_SIZES_ \n");
 	tokenMatcher(INT_NUMBER, file);
@@ -423,7 +422,6 @@ Attributes* parse_FUNC_PROTOTYPE(FILE* file) {
 	tokenMatcher(PARENTHESES_CLOSE,file);
 	return func;
 }
-
 
 void parse_FUNC_FULL_DEFS(FILE* file) {
 	fprintf(file, "FUNC_FULL_DEFS -> FUNC_WITH_BODY FUNC_FULL_DEFS_\n");
@@ -671,7 +669,6 @@ void parse_STMT_LIST_(FILE* file) {
 	switch (current_token->kind) {
 	case SEMICOLON_SIGN:
 		fprintf(file, "STMT_LIST_ -> ; STMT STMT_LIST_ \n");
-		//tokenMatcher(SEMICOLON_SIGN, file);
 		parse_STMT(file);
 		parse_STMT_LIST_(file);
 		break;
@@ -806,14 +803,8 @@ void parse_MOMO(FILE* file) {
 		tokenCurlyClose, tokenBracketsClose, tokenSemiColon, tokenComma, tokenParentesisClose;
 	current_token = next_token();
 	switch (current_token->kind) {
-	case BRACKETS_OPEN:
-		fprintf(file, "MOMO-> VAR_\n");
-		back_token();
-		parse_VAR_(file);
-		break;
 	case PARENTHESES_OPEN:
 		fprintf(file, "MOMO-> ( ARGS )\n");
-		
 		parse_ARGS(file);
 		tokenMatcher(PARENTHESES_CLOSE, file);
 		break;
@@ -821,6 +812,7 @@ void parse_MOMO(FILE* file) {
 	case ARGUMENT_OPR_PLUS:
 	case CURLY_BRACES_CLOSE:
 	case BRACKETS_CLOSE:
+	case BRACKETS_OPEN:
 	case SEMICOLON_SIGN:
 	case COMMA_SIGN:
 	case PARENTHESES_CLOSE:
@@ -830,7 +822,10 @@ void parse_MOMO(FILE* file) {
 	case OP_GE:
 	case OP_G:
 	case OP_E:
-		fprintf(file, "MOMO-> epsilon \n");
+	case EQUAL_OP:
+		fprintf(file, "MOMO-> VAR_\n");
+		back_token();
+		parse_VAR_(file);
 		break;
 	default:
 		defineToketToName(ARGUMENT_OPR_MULTIPLICATION, &tokenARGMulti);
@@ -991,6 +986,17 @@ void parse_VAR_(FILE* file) {
 		tokenMatcher(BRACKETS_CLOSE, file);
 		break;
 	case ARGUMENT_OPR_MULTIPLICATION:
+	case ARGUMENT_OPR_PLUS:
+	case PARENTHESES_CLOSE:
+	case OP_G:
+	case OP_GE:
+	case OP_L:
+	case OP_LE:
+	case OP_NE:
+	case COMMA_SIGN:
+	case SEMICOLON_SIGN:
+	case BRACKETS_CLOSE:
+	case CURLY_BRACES_CLOSE:
 	case EQUAL_OP:
 		fprintf(file, "VAR_ -> epsilon\n");
 		back_token();
@@ -1048,7 +1054,7 @@ void parse_EXPR_LIST_(FILE* file) {
 	switch (current_token->kind) {
 	case COMMA_SIGN:
 		fprintf(file, "EXPR_LIST_ -> , EXPR EXPR_LIST_\n" );
-		current_token = next_token();
+
 		parse_EXPR(file);
 		parse_EXPR_LIST_(file);
 		break;
@@ -1073,6 +1079,7 @@ void parse_CONDITION(FILE* file) {
 	fprintf(file, "CONDITION -> EXPR rel_op EXPR\n");
 	parse_EXPR(file);
 	current_token = next_token();
+
 	switch (current_token->kind)
 	{
 		case OP_LE:	
@@ -1119,6 +1126,7 @@ void parse_EXPR_(FILE* file) {
 	case CURLY_BRACES_CLOSE :
 	case COMMA_SIGN:
 	case SEMICOLON_SIGN :
+	case BRACKETS_CLOSE:
 	case OP_E:
 	case OP_G:
 	case OP_GE:
@@ -1129,6 +1137,7 @@ void parse_EXPR_(FILE* file) {
 		back_token();
 		break;
 	default:
+		/*
 		defineToketToName(PARENTHESES_CLOSE, &tokenParentesisClose);
 		defineToketToName(COMMA_SIGN, &tokenComma);
 		defineToketToName(CURLY_BRACES_CLOSE, &tokenCurlyClose);
@@ -1140,8 +1149,8 @@ void parse_EXPR_(FILE* file) {
 		defineToketToName(OP_GE, &tokenOpGE);
 		defineToketToName(OP_NE, &tokenOpNE);
 		defineToketToName(current_token->kind, &currentTokenName);
-		fprintf(file, "Expected token of type %s, %s, %s, %s, %s, %s, %s, %s, %s,  at line %d,\n", tokenParentesisClose, tokenCurlyClose, tokenOpGE, tokenOpLE, tokenOpL, tokenOpG, tokenOpE, tokenSemiColon, tokenComma, tokenOpNE, current_token->lineNumber);
-		fprintf(file, "Actual token: %s, lexeme: * %s * \n", currentTokenName, current_token->lexeme);
+	//	fprintf(file, "Expected token of type %s, %s, %s,%s, %s, %s, %s, %s, %s, %s,  at line %d,\n", tokenParentesisClose, tokenCurlyClose, tokenOpGE, tokenOpLE, tokenOpL, tokenOpG, tokenOpE, tokenSemiColon, tokenComma, tokenOpNE, current_token->lineNumber);
+		fprintf(file, "Actual token: %s, lexeme: * %s * \n", currentTokenName, current_token->lexeme);*/
 		errorHandler(followToken, 10);
 	}
 }
@@ -1150,8 +1159,8 @@ void parse_TERM_(FILE* file) {
 	int followToken[] = { ARGUMENT_OPR_PLUS , PARENTHESES_CLOSE, COMMA_SIGN, SEMICOLON_SIGN,
 		BRACKETS_CLOSE,CURLY_BRACES_CLOSE , OP_E,
 	OP_G,OP_GE,OP_L,OP_LE,OP_NE};
-	char* tokenARGMulti, * currentTokenName , tokenOpE, tokenOpLE, tokenOpNE, tokenOpL, tokenOpGE, tokenOpG, 
-			tokenCurlyClose ,tokenBracketsClose , tokenSemiColon, tokenComma, tokenParentesisClose;
+	char* tokenARGMulti, * currentTokenName , *tokenOpE, *tokenOpLE, *tokenOpNE, *tokenOpL, *tokenOpGE, *tokenOpG, 
+			*tokenCurlyClose ,*tokenBracketsClose , *tokenSemiColon, *tokenComma, *tokenParentesisClose;
 	current_token = next_token();
 	switch (current_token->kind) {
 	case ARGUMENT_OPR_MULTIPLICATION:
@@ -1172,6 +1181,7 @@ void parse_TERM_(FILE* file) {
 	case OP_GE:
 	case OP_G:
 	case OP_E:
+	case EQUAL_OP:
 		fprintf(file, "TERM_ -> epsilon\n");
 		back_token();
 		break;

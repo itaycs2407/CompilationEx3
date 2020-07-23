@@ -1073,6 +1073,7 @@ void parse_EXPR_LIST_(FILE* file) {
 }
 
 //NO TOUCH!!
+
 void parse_CONDITION(FILE* file) {
 	int followToken[] = { PARENTHESES_CLOSE };
 	char* tokenOtherID, * tokenIntNum, * tokenFloatNum, * tokenZeroNum, * tokenParenthesesOpen, * currentTokenName, * tokenOPLE, * tokenOPL, * tokenOPGE, * tokenOPG, * tokenOPE, * tokenOPNE;

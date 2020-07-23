@@ -63,36 +63,36 @@ C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפיל�
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1068,17): warning C4473: 'fprintf' : not enough arguments passed for format string
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1068,17): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1068,17): message : the missing variadic argument 3 is required by format string '%d'
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1100,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1100,17): warning C4473: 'fprintf' : not enough arguments passed for format string
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1100,17): message : placeholders and their parameters expect 7 variadic arguments, but 6 were provided
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1100,17): message : the missing variadic argument 7 is required by format string '%d'
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1078,166): warning C4101: 'tokenOPE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1078,116): warning C4101: 'tokenOPLE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1078,141): warning C4101: 'tokenOPGE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1078,154): warning C4101: 'tokenOPG': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1078,129): warning C4101: 'tokenOPL': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1078,178): warning C4101: 'tokenOPNE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,4): warning C4101: 'tokenSemiColon': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1116,48): warning C4101: 'tokenOpNE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1116,9): warning C4101: 'currentTokenName': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,20): warning C4101: 'tokenComma': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1116,37): warning C4101: 'tokenOpLE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1116,80): warning C4101: 'tokenOpG': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1116,59): warning C4101: 'tokenOpL': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,54): warning C4101: 'tokenCurlyClose': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1116,69): warning C4101: 'tokenOpGE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1116,27): warning C4101: 'tokenOpE': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,32): warning C4101: 'tokenParentesisClose': unreferenced local variable
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1202,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 12 has type 'int'
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1202,17): warning C4473: 'fprintf' : not enough arguments passed for format string
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1202,17): message : placeholders and their parameters expect 13 variadic arguments, but 12 were provided
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1202,17): message : the missing variadic argument 13 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1101,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1101,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1101,17): message : placeholders and their parameters expect 7 variadic arguments, but 6 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1101,17): message : the missing variadic argument 7 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1079,166): warning C4101: 'tokenOPE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1079,116): warning C4101: 'tokenOPLE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1079,141): warning C4101: 'tokenOPGE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1079,154): warning C4101: 'tokenOPG': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1079,129): warning C4101: 'tokenOPL': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1079,178): warning C4101: 'tokenOPNE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1118,4): warning C4101: 'tokenSemiColon': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,48): warning C4101: 'tokenOpNE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,9): warning C4101: 'currentTokenName': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1118,20): warning C4101: 'tokenComma': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,37): warning C4101: 'tokenOpLE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,80): warning C4101: 'tokenOpG': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,59): warning C4101: 'tokenOpL': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1118,54): warning C4101: 'tokenCurlyClose': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,69): warning C4101: 'tokenOpGE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1117,27): warning C4101: 'tokenOpE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1118,32): warning C4101: 'tokenParentesisClose': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1203,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 12 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1203,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1203,17): message : placeholders and their parameters expect 13 variadic arguments, but 12 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1203,17): message : the missing variadic argument 13 is required by format string '%d'
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(32): warning C4715: 'tokenMatcher': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(309): warning C4716: 'parse_DIM_SIZES': must return a value
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(337): warning C4715: 'parse_DIM_SIZES_': not all control paths return a value
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(302): warning C4715: 'parse_VAR_DEC_': not all control paths return a value
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(309): warning C4716: 'parse_DIM_SIZES': must return a value
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(360): warning C4715: 'parse_TYPE': not all control paths return a value
 C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(796): warning C4715: 'parse_FACTOR': not all control paths return a value
-C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1111): warning C4716: 'parse_EXPR': must return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1112): warning C4716: 'parse_EXPR': must return a value
   asdasdasda.vcxproj -> C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\Debug\asdasdasda.exe

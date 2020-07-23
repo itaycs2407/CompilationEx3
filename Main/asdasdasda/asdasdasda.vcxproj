@@ -118,6 +118,7 @@
     <ClCompile Include="win.lex.yy.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataItem.h" />
     <ClInclude Include="hashtable.h" />
     <ClInclude Include="Parsers.h" />
     <ClInclude Include="SymbolTable.h" />

@@ -687,6 +687,7 @@ void parse_STMT_LIST_(FILE* file) {
 	}
 }
 		
+
 void parse_STMT(FILE* file) {
 	int followToken[] = { SEMICOLON_SIGN };
 	char* tokenOtherID, * tokenCurlyBraces, * tokenKeyIf, * tokenKeyReturn, * currentTokenName;
@@ -989,6 +990,7 @@ void parse_VAR_(FILE* file) {
 	case ARGUMENT_OPR_PLUS:
 	case PARENTHESES_CLOSE:
 	case OP_G:
+	case OP_E:
 	case OP_GE:
 	case OP_L:
 	case OP_LE:

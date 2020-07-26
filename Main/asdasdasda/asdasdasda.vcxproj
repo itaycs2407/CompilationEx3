@@ -111,17 +111,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArrList.c" />
     <ClCompile Include="hashtable.c" />
     <ClCompile Include="Parsers.c" />
-    <ClCompile Include="SymbolTable.c" />
     <ClCompile Include="Token.c" />
     <ClCompile Include="win.lex.yy.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arrlist.h" />
     <ClInclude Include="DataItem.h" />
     <ClInclude Include="hashtable.h" />
     <ClInclude Include="Parsers.h" />
-    <ClInclude Include="SymbolTable.h" />
     <ClInclude Include="Token.h" />
   </ItemGroup>
   <ItemGroup>

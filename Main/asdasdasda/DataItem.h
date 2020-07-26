@@ -1,27 +1,40 @@
-#pragma once
+#ifndef DATASTRCTUER_H
+#define DATASTRCTUER_H
+#include "Arrlist.h"
+#include "hashtable.h"
 
-
-typedef enum typeOfItem
+typedef enum eType
 {
-	iInteger,
-	iFloat,
-	iVoid,
-	iError
-}typeOfItem;
+	Intt,
+	Floatt,
+	Voidd,
+	Error
+}eType;
 
-typedef enum Role
+
+typedef enum eJob
 {
-	rVariable,
-	rFunction,
-	rArray
-}Role;
+	Function,
+	Var,
+	Arr
 
-typedef struct DataItem
+}eJob;
+
+
+typedef struct DataStrctuer
 {
 	int lineNumber;
-	char* itemName;
-	Role role;
-	typeOfItem itemType;
-	int dim;
-	bool isUsed;
-};
+	int usedOrImplemented;
+	eJob job;
+	eType type;
+	char* name;
+	arraylist* params;
+	int dimnestion;
+}DataStrctuer;
+
+
+
+
+
+
+#endif

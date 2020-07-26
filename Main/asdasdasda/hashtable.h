@@ -1,61 +1,35 @@
-#ifndef HASH_TABLE_H
-#define HASH_TABLE_H
+/* This file was automatically generated.  Do not edit! */
 
-#include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "Token.h"
+typedef struct hashtable hashtable;
 
-typedef enum Type
-{
-	Integer,
-	Void,
-	Float,
-	Error
-}Type;
 
-typedef enum Role
-{
-	Var,
-	Func,
-	Array
-}Role;
+void hashtable_destroy(hashtable* t);
+typedef struct hashtable_entry hashtable_entry;
 
-//Each Id has attributes like its type, a Role which can be either variable or type, and Category. some variables are for spesific catgory
-typedef struct Attributes {
-	char* name;
-	Type type;
-	Role role;
-	int isUsed;
-	int dimension_size;
-	struct Attributes** params;
-}Attributes;
+hashtable_entry* hashtable_body_allocate(unsigned int capacity);
+hashtable* hashtable_create();
+void hashtable_remove(hashtable* t, char* key);
+void hashtable_resize(hashtable* t, unsigned int capacity);
+void hashtable_set(hashtable* t, char* key, void* value);
+void* hashtable_get(hashtable* t, char* key);
+unsigned int hashtable_find_slot(hashtable* t, char* key);
 
-//A culmn in the table
-typedef struct entry_t {
+unsigned long hashtable_hash(char* str);
+
+typedef struct hashtable {
+	unsigned int size;
+	unsigned int capacity;
+	hashtable_entry* body;
+}hashtable;
+typedef struct hashtable_entry {
 	char* key;
-	Attributes* attributes;
-	struct entry_t* next;
-} entry_t;
+	void* value;
+}hashtable_entry;
 
-//This is a hash table type
-typedef struct ht_t {
-	entry_t** entries;
-} SymobleTable;
+typedef struct HashTableHolder
+{
+	hashtable** tables;
+	int size;
+}HashTableHolder;
 
-unsigned int hash(const char* key);
-//pair between a key and his attributes
-entry_t* ht_pair(const char* key, const Attributes* attributes);
-//Create a hash table
-SymobleTable* ht_create(void);
-//Set attribute into a key in a table
-void ht_set(SymobleTable* hashtable, const char* key, const Attributes* attributes);
-//Get attribute value from the hastable based on the key value
-char* ht_get(SymobleTable* hashtable, const char* key);
-//Delete a value from the hash tash table
-void ht_del(SymobleTable* hashtable, const char* key);
-//Delete an entire table and print its keys values
-void ht_dump(SymobleTable* hashtable);
-
-#endif#pragma once
+#define INTERFACE 0

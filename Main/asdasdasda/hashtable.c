@@ -1,192 +1,152 @@
+
+#include <stdlib.h>
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
 #include "hashtable.h"
 
+ /*
+  * Interface section used for `makeheaders`.
+  */
+#if INTERFACE
+struct hashtable_entry {
+	char* key;
+	void* value;
+};
 
-#define TABLE_SIZE 1000
+struct hashtable {
+	unsigned int size;
+	unsigned int capacity;
+	hashtable_entry* body;
+};
+#endif
 
+#define HASHTABLE_INITIAL_CAPACITY 4
 
-unsigned int hash(const char* key) {
-	unsigned long int value = 0;
-	unsigned int i = 0;
-	unsigned int key_len = strlen(key);
-
-	// do several rounds of multiplication
-	for (; i < key_len; ++i) {
-		value = value * 37 + key[i];
-	}
-
-	// make sure value is 0 <= value < TABLE_SIZE
-	value = value % TABLE_SIZE;
-
-	return value;
+/**
+ * Compute the hash value for the given string.
+ * Implements the djb k=33 hash function.
+ */
+unsigned long hashtable_hash(char* str)
+{
+	unsigned long hash = 5381;
+	int c;
+	while ((c = *str++))
+		hash = ((hash << 5) + hash) + c;  /* hash * 33 + c */
+	return hash;
 }
 
-entry_t* ht_pair(const char* key, const Attributes* attributes) {
-	// allocate the entry
-	entry_t* entry = malloc(sizeof(entry_t) * 1);
-	entry->key = malloc(strlen(key) + 1);
-	entry->attributes = malloc(sizeof(Attributes));
-
-	// copy the key and value in place
-	strcpy(entry->key, key);
-	entry->attributes= attributes;
-
-	// next starts out null but may be set later on
-	entry->next = NULL;
-
-	return entry;
+/**
+ * Find an available slot for the given key, using linear probing.
+ */
+unsigned int hashtable_find_slot(hashtable* t, char* key)
+{
+	int index = hashtable_hash(key) % t->capacity;
+	while (t->body[index].key != NULL && strcmp(t->body[index].key, key) != 0) {
+		index = (index + 1) % t->capacity;
+	}
+	return index;
 }
 
-SymobleTable* ht_create(void) {
-	// allocate table
-	SymobleTable* hashtable = malloc(sizeof(SymobleTable) * 1);
-
-	// allocate table entries
-	hashtable->entries = malloc(sizeof(entry_t*) * TABLE_SIZE);
-
-	// set each to null (needed for proper operation)
-	int i = 0;
-	for (; i < TABLE_SIZE; ++i) {
-		hashtable->entries[i] = NULL;
+/**
+ * Return the item associated with the given key, or NULL if not found.
+ */
+void* hashtable_get(hashtable* t, char* key)
+{
+	int index = hashtable_find_slot(t, key);
+	if (t->body[index].key != NULL) {
+		return t->body[index].value;
 	}
-
-	return hashtable;
-}
-
-void ht_set(SymobleTable* hashtable, const char* key, const Attributes* attributes) {
-	unsigned int slot = hash(key);
-
-	// try to look up an entry set
-	entry_t* entry = hashtable->entries[slot];
-
-	// no entry means slot empty, insert immediately
-	if (entry == NULL) {
-		hashtable->entries[slot] = ht_pair(key, attributes);
-		return;
-	}
-
-	entry_t* prev=NULL;
-
-	// walk through each entry until either the end is
-	// reached or a matching key is found
-	while (entry != NULL) {
-		// check key
-		if (strcmp(entry->key, key) == 0) {
-			// match found, replace value
-			free(entry->attributes);
-			entry->attributes = malloc(sizeof(Attributes));
-			entry->attributes= attributes;
-			return;
-		}
-
-		// walk to next
-		prev = entry;
-		entry = prev->next;
-	}
-
-	// end of chain reached without a match, add new
-	prev->next = ht_pair(key, attributes);
-}
-
-char* ht_get(SymobleTable* hashtable, const char* key) {
-	unsigned int slot = hash(key);
-
-	// try to find a valid slot
-	entry_t* entry = hashtable->entries[slot];
-
-	// no slot means no entry
-	if (entry == NULL) {
+	else {
 		return NULL;
 	}
-
-	// walk through each entry in the slot, which could just be a single thing
-	while (entry != NULL) {
-		// return value if found
-		if (strcmp(entry->key, key) == 0) {
-			return entry->attributes;
-		}
-
-		// proceed to next key if available
-		entry = entry->next;
-	}
-
-	// reaching here means there were >= 1 entries but no key match
-	return NULL;
 }
 
-void ht_del(SymobleTable* hashtable, const char* key) {
-	unsigned int bucket = hash(key);
-
-	// try to find a valid bucket
-	entry_t* entry = hashtable->entries[bucket];
-
-	// no bucket means no entry
-	if (entry == NULL) {
-		return;
+/**
+ * Assign a value to the given key in the table.
+ */
+void hashtable_set(hashtable* t, char* key, void* value)
+{
+	int index = hashtable_find_slot(t, key);
+	if (t->body[index].key != NULL) {
+		/* Entry exists; update it. */
+		t->body[index].value = value;
 	}
-
-	entry_t* prev=NULL;
-	int idx = 0;
-
-	// walk through each entry until either the end is reached or a matching key is found
-	while (entry != NULL) {
-		// check key
-		if (strcmp(entry->key, key) == 0) {
-			// first item and no next entry
-			if (entry->next == NULL && idx == 0) {
-				hashtable->entries[bucket] = NULL;
-			}
-
-			// first item with a next entry
-			if (entry->next != NULL && idx == 0) {
-				hashtable->entries[bucket] = entry->next;
-			}
-
-			// last item
-			if (entry->next == NULL && idx != 0) {
-				prev->next = NULL;
-			}
-
-			// middle item
-			if (entry->next != NULL && idx != 0) {
-				prev->next = entry->next;
-			}
-
-			// free the deleted entry
-			free(entry->key);
-			free(entry->attributes);
-			free(entry);
-
-			return;
+	else {
+		t->size++;
+		/* Create a new  entry */
+		if ((float)t->size / t->capacity > 0.8) {
+			/* Resize the hash table */
+			hashtable_resize(t, t->capacity * 2);
+			index = hashtable_find_slot(t, key);
 		}
-
-		// walk to next
-		prev = entry;
-		entry = prev->next;
-
-		++idx;
+		t->body[index].key = key;
+		t->body[index].value = value;
 	}
 }
 
-void ht_dump(SymobleTable* hashtable) {
-	for (int i = 0; i < TABLE_SIZE; ++i) {
-		entry_t* entry = hashtable->entries[i];
-
-		if (entry == NULL) {
-			continue;
-		}
-
-		printf("slot[%4d]: ", i);
-
-		for (;;) {
-			printf("%s ", entry->key);
-
-			if (entry->next == NULL) {
-				break;
-			}
-
-			entry = entry->next;
-		}
-
-		printf("\n");
+/**
+ * Remove a key from the table
+ */
+void hashtable_remove(hashtable* t, char* key)
+{
+	int index = hashtable_find_slot(t, key);
+	if (t->body[index].key != NULL) {
+		t->body[index].key = NULL;
+		t->body[index].value = NULL;
+		t->size--;
 	}
 }
+
+/**
+ * Create a new, empty hashtable
+ */
+hashtable* hashtable_create()
+{
+	hashtable* new_ht = malloc(sizeof(hashtable));
+	new_ht->size = 0;
+	new_ht->capacity = HASHTABLE_INITIAL_CAPACITY;
+	new_ht->body = hashtable_body_allocate(new_ht->capacity);
+	return new_ht;
+}
+
+/**
+ * Allocate a new memory block with the given capacity.
+ */
+hashtable_entry* hashtable_body_allocate(unsigned int capacity)
+{
+	// calloc fills the allocated memory with zeroes
+	return (hashtable_entry*)calloc(capacity, sizeof(hashtable_entry));
+}
+
+/**
+ * Resize the allocated memory.
+ */
+void hashtable_resize(hashtable* t, unsigned int capacity)
+{
+	assert(capacity >= t->size);
+	unsigned int old_capacity = t->capacity;
+	hashtable_entry* old_body = t->body;
+	t->body = hashtable_body_allocate(capacity);
+	t->capacity = capacity;
+
+	// Copy all the old values into the newly allocated body
+	for (int i = 0; i < old_capacity; i++) {
+		if (old_body[i].key != NULL) {
+			hashtable_set(t, old_body[i].key, old_body[i].value);
+		}
+	}
+}
+
+/**
+ * Destroy the table and deallocate it from memory. This does not deallocate the contained items.
+ */
+void hashtable_destroy(hashtable* t)
+{
+	free(t->body);
+	free(t);
+}
+
+
+

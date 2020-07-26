@@ -27,7 +27,7 @@
     <ClCompile Include="hashtable.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SymbolTable.c">
+    <ClCompile Include="ArrList.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,10 +41,10 @@
     <ClInclude Include="hashtable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SymbolTable.h">
+    <ClInclude Include="DataItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataItem.h">
+    <ClInclude Include="Arrlist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

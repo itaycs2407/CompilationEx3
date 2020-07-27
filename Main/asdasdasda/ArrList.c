@@ -35,9 +35,9 @@ struct arraylist {
  /**
   * Create a new, empty arraylist.
   */
-arraylist* arraylist_create()
+ArrayList* ArrayListCreate()
 {
-	arraylist* new_list = malloc(sizeof(arraylist));
+	ArrayList* new_list = malloc(sizeof(ArrayList));
 	new_list->size = 0;
 	// Allocate the array
 	new_list->body = malloc(sizeof(void*) * ARRAYLIST_INITIAL_CAPACITY);
@@ -49,7 +49,7 @@ arraylist* arraylist_create()
 /**
  * Allocate sufficient array capacity for at least `size` elements.
  */
-void arraylist_allocate(arraylist* l, unsigned int size)
+void arraylist_allocate(ArrayList* l, unsigned int size)
 {
 	assert(size > 0);
 	if (size > l->capacity) {
@@ -66,14 +66,14 @@ void arraylist_allocate(arraylist* l, unsigned int size)
 /**
  * Return the number of items contained in the list.
  */
-extern inline unsigned int arraylist_size(arraylist* l) {
+extern inline unsigned int ArrayListSize(ArrayList* l) {
 	return l->size;
 }
 
 /**
  * Add item at the end of the list.
  */
-void arraylist_add(arraylist* l, void* item)
+void ArrayListAdd(ArrayList* l, void* item)
 {
 	arraylist_allocate(l, l->size + 1);
 	l->body[l->size++] = item;
@@ -82,7 +82,7 @@ void arraylist_add(arraylist* l, void* item)
 /**
  * Pop (remove and return) an item off the end of the list.
  */
-void* arraylist_pop(arraylist* l)
+void* arraylist_pop(ArrayList* l)
 {
 	assert(l->size > 0);
 	return l->body[--l->size];
@@ -91,7 +91,7 @@ void* arraylist_pop(arraylist* l)
 /**
  * Return item located at index.
  */
-void* arraylist_get(arraylist* l, unsigned int index)
+void* ArrayListGet(ArrayList* l, unsigned int index)
 {
 	assert(index < l->size);
 	return l->body[index];
@@ -100,7 +100,7 @@ void* arraylist_get(arraylist* l, unsigned int index)
 /**
  * Replace item at index with given value.
  */
-void arraylist_set(arraylist* l, unsigned int index, void* value)
+void arraylist_set(ArrayList* l, unsigned int index, void* value)
 {
 	assert(index < l->size);
 	l->body[index] = value;
@@ -109,7 +109,7 @@ void arraylist_set(arraylist* l, unsigned int index, void* value)
 /**
  * Insert item at index, shifting the following items by one spot.
  */
-void arraylist_insert(arraylist* l, unsigned int index, void* value)
+void arraylist_insert(ArrayList* l, unsigned int index, void* value)
 {
 	// Reallocate, if needed
 	arraylist_allocate(l, l->size + 1);
@@ -123,7 +123,7 @@ void arraylist_insert(arraylist* l, unsigned int index, void* value)
 /**
  * Remove the item at index, shifting the following items back by one spot.
  */
-void* arraylist_remove(arraylist* l, unsigned int index)
+void* arraylist_remove(ArrayList* l, unsigned int index)
 {
 	void* value = l->body[index];
 	arraylist_memshift(l->body + index + 1, -1, l->size - index);
@@ -134,7 +134,7 @@ void* arraylist_remove(arraylist* l, unsigned int index)
 /**
  * Clear list of all items.
  */
-void arraylist_clear(arraylist* l)
+void arraylist_clear(ArrayList* l)
 {
 	l->size = 0;
 }
@@ -142,10 +142,10 @@ void arraylist_clear(arraylist* l)
 /**
  * Return a slice of the list (of given length starting at index) as a new arraylist.
  */
-arraylist* arraylist_slice(arraylist* l, unsigned int index, unsigned int length)
+ArrayList* arraylist_slice(ArrayList* l, unsigned int index, unsigned int length)
 {
 	assert(index + length <= l->size);
-	arraylist* new_list = arraylist_create();
+	ArrayList* new_list = ArrayListCreate();
 	arraylist_allocate(new_list, length);
 	memmove(new_list->body, l->body + index, length * sizeof(void*));
 	new_list->size = length;
@@ -155,7 +155,7 @@ arraylist* arraylist_slice(arraylist* l, unsigned int index, unsigned int length
 /**
  * Return a slice of the list (from index to the end) as a new arraylist.
  */
-arraylist* arraylist_slice_end(arraylist* l, unsigned int index)
+ArrayList* arraylist_slice_end(ArrayList* l, unsigned int index)
 {
 	return arraylist_slice(l, index, l->size - index);
 }
@@ -163,7 +163,7 @@ arraylist* arraylist_slice_end(arraylist* l, unsigned int index)
 /**
  * Return a copy of the arraylist.
  */
-arraylist* arraylist_copy(arraylist* l)
+ArrayList* arraylist_copy(ArrayList* l)
 {
 	return arraylist_slice_end(l, 0);
 }
@@ -171,7 +171,7 @@ arraylist* arraylist_copy(arraylist* l)
 /**
  * Append a list onto another, in-place.
  */
-void arraylist_join(arraylist* l, arraylist* source)
+void arraylist_join(ArrayList* l, ArrayList* source)
 {
 	arraylist_splice(l, source, l->size);
 }
@@ -179,7 +179,7 @@ void arraylist_join(arraylist* l, arraylist* source)
 /**
  * Insert a list into another at the given index, in-place.
  */
-void arraylist_splice(arraylist* l, arraylist* source, unsigned int index)
+void arraylist_splice(ArrayList* l, ArrayList* source, unsigned int index)
 {
 	// Reallocate, if needed
 	arraylist_allocate(l, l->size + source->size);
@@ -192,7 +192,7 @@ void arraylist_splice(arraylist* l, arraylist* source, unsigned int index)
 	l->size += source->size;
 }
 
-void arraylist_destroy(arraylist* l)
+void arraylist_destroy(ArrayList* l)
 {
 	free(l->body);
 	free(l);

@@ -10,7 +10,7 @@ int currentIndex = 0;
 
  // init of the currentIndex
 
-void  getFirstToken() {
+void  InitializeFirstToken() {
 	currentNode = headNode;
 	currentIndex = 0;
 }

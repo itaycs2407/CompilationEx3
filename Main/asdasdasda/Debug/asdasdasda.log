@@ -1,1 +1,129 @@
-﻿  asdasdasda.vcxproj -> C:\stam\Main\Debug\asdasdasda.exe
+﻿  Parsers.c
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(59,43): warning C4047: '!=': 'int' differs in levels of indirection from 'Token *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(99,15): warning C4129: ',': unrecognized character escape sequence
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(102,15): warning C4129: ';': unrecognized character escape sequence
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(294,40): warning C4101: 'tokenIntNumberZ': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(294,24): warning C4101: 'tokenIntNumber': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(842,16): warning C4098: 'parse_STMT_': 'void' function returning a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(884,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(884,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(884,17): message : placeholders and their parameters expect 7 variadic arguments, but 6 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(884,17): message : the missing variadic argument 7 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(958,57): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(958,57): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(959,56): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(959,56): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(960,52): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(960,52): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(961,61): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(961,61): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(962,44): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(962,44): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(963,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(963,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(964,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(964,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(965,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(965,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(966,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(966,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(967,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(967,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(968,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(968,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 3 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 5 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 7 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 8 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 9 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 10 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 11 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 12 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): message : placeholders and their parameters expect 13 variadic arguments, but 12 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(970,17): message : the missing variadic argument 13 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(994,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(994,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(994,17): message : placeholders and their parameters expect 7 variadic arguments, but 2 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(994,17): message : the missing variadic argument 3 is required by format string '%s'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1020,17): warning C4566: character represented by universal-character-name '\u025B' cannot be represented in the current code page (1255)
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1063,17): warning C4477: 'fprintf' : format string '%d' requires an argument of type 'int', but variadic argument 6 has type 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1063,187): warning C4474: 'fprintf' : too many arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1063,187): message : placeholders and their parameters expect 6 variadic arguments, but 7 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1102,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1102,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1102,17): message : placeholders and their parameters expect 5 variadic arguments, but 4 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1102,17): message : the missing variadic argument 5 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1132,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1132,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1132,17): message : placeholders and their parameters expect 3 variadic arguments, but 2 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1132,17): message : the missing variadic argument 3 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1162,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1162,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1162,17): message : placeholders and their parameters expect 7 variadic arguments, but 6 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1162,17): message : the missing variadic argument 7 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1141,166): warning C4101: 'tokenOPE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1141,116): warning C4101: 'tokenOPLE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1141,141): warning C4101: 'tokenOPGE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1141,154): warning C4101: 'tokenOPG': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1141,129): warning C4101: 'tokenOPL': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1141,178): warning C4101: 'tokenOPNE': unreferenced local variable
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1173,20): warning C4013: 'ItemCompare' undefined; assuming extern returning int
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1203,61): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1203,61): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1204,44): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1204,44): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1205,57): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1205,57): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1206,52): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1206,52): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1207,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1207,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1208,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1208,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1209,36): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1209,36): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1210,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1210,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1211,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1211,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1212,38): warning C4047: 'function': 'char **' differs in levels of indirection from 'char *'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1212,38): warning C4024: 'defineToketToName': different types for formal and actual parameter 2
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 3 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 5 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 6 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 7 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 8 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 9 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1214,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 10 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1263,17): warning C4477: 'fprintf' : format string '%s' requires an argument of type 'char *', but variadic argument 12 has type 'int'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1263,17): warning C4473: 'fprintf' : not enough arguments passed for format string
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1263,17): message : placeholders and their parameters expect 13 variadic arguments, but 12 were provided
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1263,17): message : the missing variadic argument 13 is required by format string '%d'
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1336,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(33): warning C4715: 'tokenMatcher': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(258): warning C4716: 'parse_VAR_DEC': must return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(283): warning C4715: 'parse_VAR_DEC_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(337): warning C4715: 'parse_TYPE': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(314): warning C4715: 'parse_DIM_SIZES_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(545): warning C4715: 'parse_RETURNED_TYPE': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(623): warning C4715: 'parse_PARAM_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(571): warning C4715: 'parse_PARAMS': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(889): warning C4715: 'parse_FACTOR': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(975): warning C4715: 'parse_MOMO': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(999): warning C4715: 'parse_ARG_LIST_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1036): warning C4715: 'parse_ARGS': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1068): warning C4715: 'parse_RETURN_STMT_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1107): warning C4715: 'parse_VAR_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1137): warning C4715: 'parse_EXPR_LIST_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1218): warning C4715: 'parse_EXPR_': not all control paths return a value
+C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\asdasdasda\Parsers.c(1267): warning C4715: 'parse_TERM_': not all control paths return a value
+  asdasdasda.vcxproj -> C:\Users\Itay Cohen\Desktop\לימודים\שנה ג\סמסטר ב\קומפילציה\Matala3\Main\Debug\asdasdasda.exe

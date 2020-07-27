@@ -1,18 +1,18 @@
 /* This file was automatically generated.  Do not edit! */
 
-typedef struct hashtable hashtable;
+typedef struct hashtable HashTable;
 
 
-void hashtable_destroy(hashtable* t);
+void hashtable_destroy(HashTable* t);
 typedef struct hashtable_entry hashtable_entry;
 
 hashtable_entry* hashtable_body_allocate(unsigned int capacity);
-hashtable* hashtable_create();
-void hashtable_remove(hashtable* t, char* key);
-void hashtable_resize(hashtable* t, unsigned int capacity);
-void hashtable_set(hashtable* t, char* key, void* value);
-void* hashtable_get(hashtable* t, char* key);
-unsigned int hashtable_find_slot(hashtable* t, char* key);
+HashTable* HashTableCreate();
+void hashtable_remove(HashTable* t, char* key);
+void hashtable_resize(HashTable* t, unsigned int capacity);
+void HashTableSet(HashTable* t, char* key, void* value);
+void* HashTableGet(HashTable* t, char* key);
+unsigned int hashtable_find_slot(HashTable* t, char* key);
 
 unsigned long hashtable_hash(char* str);
 
@@ -20,7 +20,7 @@ typedef struct hashtable {
 	unsigned int size;
 	unsigned int capacity;
 	hashtable_entry* body;
-}hashtable;
+}HashTable;
 typedef struct hashtable_entry {
 	char* key;
 	void* value;
@@ -28,7 +28,7 @@ typedef struct hashtable_entry {
 
 typedef struct HashTableHolder
 {
-	hashtable** tables;
+	HashTable** tables;
 	int size;
 }HashTableHolder;
 

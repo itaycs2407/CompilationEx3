@@ -1,20 +1,17 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include "Parsers.h"
 #include "Token.h"
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-
-HashTableHolder* hashtableHolder;
+HashTableHolder* HashCarrier;
 Token* current_token;
 int currentIndex;
 Node* currentNode;
-FILE* semanticOutPut;
-eType functionGlobalReturnType;
-int flagToDetermineIfFunctionReturn = 0;
+FILE* SemanticFilePtr;
+ItemType GlobalReturnType;
+int isFunctionReturned = 0;
 
 // Handler Function
 int tokenMatcher(eTOKENS token, FILE* file)
@@ -34,16 +31,6 @@ int tokenMatcher(eTOKENS token, FILE* file)
 		return 0;
 	}
 }
-
-/* Token* lookAHead(int timesToLook) {
-
-	Token* tempToken = &currentNode->tokensArray[currentIndex];
-	while (timesToLook > 0 && tempToken->kind != EOF_TOK) {
-		tempToken = next_token();
-		timesToLook--;
-	}
-	return tempToken;
-}*/
 
 Token* lookAhead(int numberOfTimes)
 {
@@ -78,6 +65,7 @@ void errorHandler(int *followArray, int size)
 		}
 	}
 }
+
 void defineToketToName(eTOKENS token, char* str[]) {
 	char* tokenName = (char*)malloc(sizeof(char) * 20);
 	switch (token)
@@ -176,14 +164,13 @@ void defineToketToName(eTOKENS token, char* str[]) {
 void startParsing(FILE* file,int number) {
 	if (number == 1)
 	{
-		semanticOutPut = fopen("c:\\temp\\test1_066524737_302788781_204072524_semantic.txt", "w+");
+		SemanticFilePtr = fopen("c:\\temp\\test1_066524737_302788781_204072524_semantic_output.txt", "w+");
 	}
 	else
 	{
-		semanticOutPut = fopen("c:\\temp\\test2_066524737_302788781_204072524_semantic.txt", "w+");
-
+		SemanticFilePtr = fopen("c:\\temp\\test2_066524737_302788781_204072524_semantic_output.txt", "w+");
 	}
-	getFirstToken();
+	InitializeFirstToken();
 	parse_PROG(file);
 	tokenMatcher(EOF_TOK, file);
 }
@@ -191,16 +178,18 @@ void startParsing(FILE* file,int number) {
 // Parsers 
 void parse_PROG(FILE* file) {
 	fprintf(file, "PROG -> GLOBAL_VARS FUNC_PREDEFS FUNC_FULL_DEFS\n");
-	hashtableHolder = (HashTableHolder*)calloc(1, sizeof(HashTableHolder));
-	hashtableHolder->size = -1;
-	hashtableHolder->tables = (hashtable**)calloc(80, sizeof(hashtable*));
-	createNewHashTable();
+	HashCarrierCreation();
+	GenerateHashTable();
 	parse_GLOBAL_VARS(file);
-	//#### fix parser
 	parse_FUNC_PREDEFS(file);
-	//#### fix parser
 	parse_FUNC_FULL_DEFS(file);
-	popHashTable();
+}
+
+void HashCarrierCreation()
+{
+	HashCarrier = (HashTableHolder*)calloc(1, sizeof(HashTableHolder));
+	HashCarrier->size = -1;
+	HashCarrier->tables = (HashTable**)calloc(80, sizeof(HashTable*));
 }
 
 void parse_GLOBAL_VARS(FILE* file) {
@@ -251,24 +240,21 @@ void parse_GLOBAL_VARS_(FILE* file) {
 	}
 }
 
-DataStrctuer* parse_VAR_DEC(FILE* file) {
-	DataStrctuer* dataItem = (DataStrctuer*)calloc(1, sizeof(DataStrctuer));
+DataItem* parse_VAR_DEC(FILE* file) {
+	DataItem* tempDataItem = (DataItem*)calloc(1, sizeof(DataItem));
 	fprintf(file, "VAR_DEC->TYPE id VAR_DEC_\n");
-	dataItem->type = parse_TYPE(file);
-	dataItem->lineNumber = current_token->lineNumber;
+	tempDataItem->type = parse_TYPE(file);
+	tempDataItem->lineNumber = current_token->lineNumber;
 	tokenMatcher(OTHER_ID,file);
-	dataItem->name = current_token->lexeme;
-	int result = dataItem->dimnestion = parse_VAR_DEC_(file);
-	if (result == -1)
+	tempDataItem->name = current_token->lexeme;
+	int resultOfParser = tempDataItem->dimnestion = parse_VAR_DEC_(file);
+	tempDataItem->role = Arr;
+	if (resultOfParser == -1)
 	{
-		dataItem->job = Var;
+		tempDataItem->role = Var;
 	}
-	else
-	{
-		dataItem->job = Arr;
-	}
-	dataItem->dimnestion = result;
-	insertToTopHashTable(dataItem);
+	tempDataItem->dimnestion = resultOfParser;
+	InsertToTopHashTable(tempDataItem);
 }
 
 int parse_VAR_DEC_(FILE* file) {
@@ -281,10 +267,10 @@ int parse_VAR_DEC_(FILE* file) {
 		return -1;
 	case BRACKETS_OPEN:
 		fprintf(file, "VAR_DEC_ -> [ DIM_SIZES ] ; \n");
-		int result = parse_DIM_SIZES(file);
+		int resultOfParser = parse_DIM_SIZES(file);
 		tokenMatcher(BRACKETS_CLOSE, file);
 		tokenMatcher(SEMICOLON_SIGN, file);
-		return result;
+		return resultOfParser;
 	default:
 		defineToketToName(SEMICOLON_SIGN, &keySemicolon);
 		defineToketToName(BRACKETS_OPEN, &keyBracketsOpen);
@@ -299,7 +285,6 @@ int parse_VAR_DEC_(FILE* file) {
 int parse_DIM_SIZES(FILE* file) {
 	fprintf(file, "parse_DIM_SIZES -> int_num DIM_SIZES_ \n");
 	tokenMatcher(INT_NUMBER, file);
-	
 	return parse_DIM_SIZES_(file) + 1;
 }
 		
@@ -313,7 +298,7 @@ int parse_DIM_SIZES_(FILE* file) {
 	case COMMA_SIGN:
 		fprintf(file, "DIM_SIZES_ -> , int_num DIM_SIZES_\n");
 		tokenMatcher(INT_NUMBER, file);
-		return parse_DIM_SIZES_(file) + 1;
+		return 1 + parse_DIM_SIZES_(file);
 	case BRACKETS_CLOSE:
 		back_token();
 		fprintf(file, "DIM_SIZES_ -> epsilon \n");
@@ -328,7 +313,7 @@ int parse_DIM_SIZES_(FILE* file) {
 	}
 }
 
-eType parse_TYPE(FILE* file) {
+ItemType parse_TYPE(FILE* file) {
 	int followToken[] = { OTHER_ID };
 	char *tokenInt, *tokenFloat, * currentTokenName;
 	current_token = next_token();
@@ -353,18 +338,18 @@ eType parse_TYPE(FILE* file) {
 
 void parse_FUNC_PREDEFS(FILE * file) {
 	fprintf(file, "FUNC_PREDEFS -> FUNC_PROTOTYPE ; FUNC_PREDEFS_\n");
-	DataStrctuer* data = parse_FUNC_PROTOTYPE(file);
-	if (checkForDuplicateParams(data) == 0)
+	DataItem* tempDataItem = parse_FUNC_PROTOTYPE(file);
+	if (isExistParam(tempDataItem) == 0)
 	{
-		hashtable* temp = hashtableHolder->tables[hashtableHolder->size];
-		DataStrctuer* result = (DataStrctuer*)hashtable_get(temp, data->name);
+		HashTable* tempHashTableItem = HashCarrier->tables[HashCarrier->size];
+		DataItem* result = (DataItem*)HashTableGet(tempHashTableItem, tempDataItem->name);
 		if (result == NULL)
 		{
-			hashtable_set(temp, data->name, data);
+			HashTableSet(tempHashTableItem, tempDataItem->name, tempDataItem);
 		}
 		else
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s is already exists\n", current_token->lineNumber, data->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d, there is id - %s - that is already exists\n", current_token->lineNumber, tempDataItem->name);
 		}
 	}
 	tokenMatcher(SEMICOLON_SIGN, file);
@@ -390,19 +375,19 @@ void parse_FUNC_PREDEFS_(FILE* file) {
 		case SEMICOLON_SIGN:
 		case EOF_TOK:
 			back_token();
-			DataStrctuer* data = parse_FUNC_PROTOTYPE(file);
+			DataItem* tempDataItem = parse_FUNC_PROTOTYPE(file);
 			fprintf(file, "FUNC_PREDEFS -> FUNC_PROTOTYPE ; FUNC_PREDEFS_\n");
-			if (checkForDuplicateParams(data) == 0)
+			if (!isExistParam(tempDataItem))
 			{
-				hashtable* temp = hashtableHolder->tables[hashtableHolder->size];
-				DataStrctuer* result = (DataStrctuer*)hashtable_get(temp, data->name);
-				if (result == NULL)
+				HashTable* tempHashTable = HashCarrier->tables[HashCarrier->size];
+				DataItem* DataItemResult = (DataItem*)HashTableGet(tempHashTable, tempDataItem->name);
+				if (DataItemResult == NULL)
 				{
-					hashtable_set(temp, data->name, data);
+					HashTableSet(tempHashTable, tempDataItem->name, tempDataItem);
 				}
 				else
 				{
-					fprintf(semanticOutPut, "Line - %d | id %s is already exists\n", current_token->lineNumber, data->name);
+					fprintf(SemanticFilePtr, "Problem! In line %d, there is id - %s - that is already exists\n", current_token->lineNumber, tempDataItem->name);
 				}
 			}
 				tokenMatcher(SEMICOLON_SIGN, file);
@@ -429,19 +414,19 @@ void parse_FUNC_PREDEFS_(FILE* file) {
 	}
 }
 
-DataStrctuer* parse_FUNC_PROTOTYPE(FILE* file) {
+DataItem* parse_FUNC_PROTOTYPE(FILE* file) {
 
-	DataStrctuer* data = (DataStrctuer*)calloc(1, sizeof(DataStrctuer));
+	DataItem* tempDataItem = (DataItem*)calloc(1, sizeof(DataItem));
 	fprintf(file, "FUNC_PROTOTYPE -> RETURNED_TYPE id ( PARAMS )\n");
-	data->type = parse_RETURNED_TYPE(file);
+	tempDataItem->type = parse_RETURNED_TYPE(file);
 	tokenMatcher(OTHER_ID, file);
-	data->lineNumber = current_token->lineNumber;
-	data->name = current_token->lexeme;
-	data->job = Function;
+	tempDataItem->lineNumber = current_token->lineNumber;
+	tempDataItem->name = current_token->lexeme;
+	tempDataItem->role = Function;
 	tokenMatcher(PARENTHESES_OPEN, file);
-	data->params = parse_PARAMS(file);
+	tempDataItem->params = parse_PARAMS(file);
 	tokenMatcher(PARENTHESES_CLOSE,file);
-	return data;
+	return tempDataItem;
 }
 
 void parse_FUNC_FULL_DEFS(FILE* file) {
@@ -452,58 +437,55 @@ void parse_FUNC_FULL_DEFS(FILE* file) {
  
 void parse_FUNC_WITH_BODY(FILE* file) {
 	fprintf(file, "FUNC_WITH_BODY -> FUNC_PROTOTYPE COMP_STMT\n");
-	DataStrctuer* data = parse_FUNC_PROTOTYPE(file);
+	DataItem* tempDataItem = parse_FUNC_PROTOTYPE(file);
 
-	if (checkForDuplicateParams(data) == 0)
+	if (!isExistParam(tempDataItem))
 	{
-		hashtable* temp = hashtableHolder->tables[hashtableHolder->size];
-		DataStrctuer* result = (DataStrctuer*)hashtable_get(temp, data->name);
-		if (result == NULL)
+		HashTable* tempHashTable = HashCarrier->tables[HashCarrier->size];
+		DataItem* DataItemResult = (DataItem*)HashTableGet(tempHashTable, tempDataItem->name);
+		if (DataItemResult == NULL)
 		{
-			data->usedOrImplemented = 1;
-			hashtable_set(temp, data->name, data);
+			tempDataItem->isImplemented = 1;
+			HashTableSet(tempHashTable, tempDataItem->name, tempDataItem);
 		}
 		else
 		{
-			if (result->job != Function)
+			if (DataItemResult->role != Function)
 			{
-				fprintf(semanticOutPut, "Line - %d | id %s is is not function \n", current_token->lineNumber, result->name);
+				fprintf(SemanticFilePtr, "Problem! In line %d, the id %s is not a function! \n", current_token->lineNumber, DataItemResult->name);
 			}
 			else
 			{
-				int returned = checkTheFunctionSignature(data, result);
-				if (returned == 1)
+				if (FunctionDefinision(tempDataItem, DataItemResult))
 				{
-					if (result->usedOrImplemented == 1)
+					if (DataItemResult->isImplemented)
 					{
-						fprintf(semanticOutPut, "Line - %d | function %s is already implemented\n", current_token->lineNumber, result->name);
+						fprintf(SemanticFilePtr, "Problem! In line %d,the function %s is already implemented\n", current_token->lineNumber, DataItemResult->name);
 					}
 					else
 					{
-						result->usedOrImplemented = 1;
+						DataItemResult->isImplemented = 1;
 					}
 				}
-
 			}
 		}
 	}
-	createNewHashTable();
-	int size = data->params == NULL ? 0 : arraylist_size(data->params);
+	GenerateHashTable();
+	int size = tempDataItem->params == NULL ? 0 : ArrayListSize(tempDataItem->params);
 	for (int i = 0; i < size; i++)
 	{
-		DataStrctuer* temp = ((DataStrctuer*)arraylist_get(data->params, i));
-		insertToTopHashTable(temp);
+		DataItem* temp = ((DataItem*)ArrayListGet(tempDataItem->params, i));
+		InsertToTopHashTable(temp);
 	}
-	functionGlobalReturnType = data->type;
-	flagToDetermineIfFunctionReturn = 0;
+	GlobalReturnType = tempDataItem->type;
+	isFunctionReturned = 0;
 	parse_COMP_STMT(file);
-	popHashTable();
-	if (functionGlobalReturnType != Voidd && flagToDetermineIfFunctionReturn == 0)
+	PopFromHashTable();
+	if (GlobalReturnType != Voidd && !isFunctionReturned)
 	{
-		fprintf(semanticOutPut, "Line - %d | function %s dosn'et caontatin any return statment\n", current_token->lineNumber, data->name);
-
+		fprintf(SemanticFilePtr, "Problem! In line %d,the function %s, not returning any statment\n", current_token->lineNumber, tempDataItem->name);
 	}
-
+	
 }
 
 void parse_FUNC_FULL_DEFS_(FILE* file) {
@@ -536,7 +518,7 @@ void parse_FUNC_FULL_DEFS_(FILE* file) {
 	}
 }
 
-eType parse_RETURNED_TYPE(FILE* file) {
+ItemType parse_RETURNED_TYPE(FILE* file) {
 	int followToken[] = { OTHER_ID };
 	char* tokenKeyInt, * tokenKeyFloat, * tokenKeyVoid, *currentTokenName;
 	current_token = next_token();
@@ -546,7 +528,6 @@ eType parse_RETURNED_TYPE(FILE* file) {
 		back_token();
 		fprintf(file, "RETURNED_TYPE -> TYPE \n");
 		return parse_TYPE(file);
-		break;
 	case KEY_VOID:
 		fprintf(file, "RETURNED_TYPE -> void\n");
 		return Voidd;
@@ -563,7 +544,7 @@ eType parse_RETURNED_TYPE(FILE* file) {
 
 }
 
-arraylist* parse_PARAMS(FILE* file) {
+ArrayList* parse_PARAMS(FILE* file) {
 	int followToken[] = { PARENTHESES_CLOSE };
 	char* tokenInt, * tokenFloat, *tokenParentesesClose, * currentTokenName;
 	current_token = next_token();
@@ -573,7 +554,6 @@ arraylist* parse_PARAMS(FILE* file) {
 		back_token();
 		fprintf(file, "PARAMS -> PARAM_LIST\n");
 		return parse_PARAM_LIST(file);
-		break;
 	case PARENTHESES_CLOSE:
 		back_token();
 		fprintf(file, "PARAMS -> epsilon\n");
@@ -590,15 +570,15 @@ arraylist* parse_PARAMS(FILE* file) {
 	}
 }
 
-void parse_PARAM_LIST_(FILE* file,arraylist* list) {
+void parse_PARAM_LIST_(FILE* file,ArrayList* list) {
 	int followToken[] = { PARENTHESES_CLOSE };
 	char* tokenCommaSign, * currentTokenName, * tokenParentesesClose;
 	current_token = next_token();
 	switch (current_token->kind) {
 	case COMMA_SIGN:
 		fprintf(file, "PARAM_LIST_ ->, PARAM PARAM_LIST_ \n");
-		DataStrctuer* param = parse_PARAM(file);
-		arraylist_add(list, param);
+		DataItem* resultOfParser = parse_PARAM(file);
+		ArrayListAdd(list, resultOfParser);
 		parse_PARAM_LIST_(file,list);
 		break;
 	case PARENTHESES_CLOSE:
@@ -623,9 +603,9 @@ int parse_PARAM_(FILE* file) {
 	switch (current_token->kind) {
 	case BRACKETS_OPEN:
 		fprintf(file, "PARAM_ -> [ DIM_SIZES ]\n");
-		int result = parse_DIM_SIZES(file);
+		int resultOfParser = parse_DIM_SIZES(file);
 		tokenMatcher(BRACKETS_CLOSE, file);
-		return result;
+		return resultOfParser;
 	case COMMA_SIGN:
 	case PARENTHESES_CLOSE:   
 		back_token();
@@ -644,13 +624,13 @@ int parse_PARAM_(FILE* file) {
 
 void parse_COMP_STMT(FILE* file) {
 	
-	createNewHashTable();
+	GenerateHashTable();
 	fprintf(file, "COMP_STMT -> { VAR_DEC_LIST_ STMT_LIST }\n");
 	tokenMatcher(CURLY_BRACES_OPEN, file);
 	parse_VAR_DEC_LIST(file);
 	parse_STMT_LIST(file);
 	tokenMatcher(CURLY_BRACES_CLOSE, file);
-	popHashTable();
+	PopFromHashTable();
 }
 
 void parse_VAR_DEC_LIST(FILE* file) {
@@ -687,29 +667,28 @@ void parse_VAR_DEC_LIST(FILE* file) {
 	}
 }
 
-DataStrctuer* parse_PARAM(FILE* file) {
-	DataStrctuer* data = (DataStrctuer*)calloc(1, sizeof(DataStrctuer));
+DataItem* parse_PARAM(FILE* file) {
+	DataItem* tempDataItem = (DataItem*)calloc(1, sizeof(DataItem));
 	fprintf(file, "PARAM -> TYPE id PARAM_\n");
-	data->type = parse_TYPE(file);
+	tempDataItem->type = parse_TYPE(file);
 	tokenMatcher(OTHER_ID, file);
-	data->lineNumber = current_token->lineNumber;
-	data->name = current_token->lexeme;
-	data->dimnestion = parse_PARAM_(file);
-	data->job = Arr;
-	if (data->dimnestion == -1) {
-		data->job = Var;
+	tempDataItem->lineNumber = current_token->lineNumber;
+	tempDataItem->name = current_token->lexeme;
+	tempDataItem->dimnestion = parse_PARAM_(file);
+	tempDataItem->role = Arr;
+	if (tempDataItem->dimnestion == -1) {
+		tempDataItem->role = Var;
 	}
-	
-	return data;
+	return tempDataItem;
 }
 
-arraylist* parse_PARAM_LIST(FILE* file) {
-	arraylist* mylist = arraylist_create();
+ArrayList* parse_PARAM_LIST(FILE* file) {
+	ArrayList* tempArrayList = ArrayListCreate();
 	fprintf(file, "PARAM_LIST -> PARAM PARAM_LIST_\n");
-	DataStrctuer* param = parse_PARAM(file);
-	arraylist_add(mylist, param);
-	parse_PARAM_LIST_(file,mylist);
-	return mylist;
+	DataItem* resultOfParser = parse_PARAM(file);
+	ArrayListAdd(tempArrayList, resultOfParser);
+	parse_PARAM_LIST_(file,tempArrayList);
+	return tempArrayList;
 }
 
 void parse_STMT_LIST(FILE* file) {
@@ -730,17 +709,15 @@ void parse_IF_STMT(FILE* file) {
 void parse_RETURN_STMT(FILE* file) {
 	fprintf(file, "RETURN_STMT -> return RETURN_STMT_\n");
 	tokenMatcher(KEY_RETURN, file);
-	eType type = parse_RETURN_STMT_(file);
-	if (type != functionGlobalReturnType)
+	ItemType tempItemType = parse_RETURN_STMT_(file);
+	if (tempItemType != GlobalReturnType)
 	{
-		fprintf(semanticOutPut, "Line - %d | return type dosen' tmatch to signature type\n", current_token->lineNumber);
-
+		fprintf(SemanticFilePtr, "Problem! In line %d,the return type is not the same as signature type\n", current_token->lineNumber);
 	}
 	else
 	{
-		flagToDetermineIfFunctionReturn = 1;
+		isFunctionReturned = 1;
 	}
-
 }
 
 void parse_STMT_LIST_(FILE* file) {
@@ -766,8 +743,7 @@ void parse_STMT_LIST_(FILE* file) {
 		errorHandler(followToken, 1);
 		break;
 	}
-}
-		
+}		
 
 void parse_STMT(FILE* file) {
 	int followToken[] = { SEMICOLON_SIGN };
@@ -810,61 +786,59 @@ void parse_STMT_(FILE* file, char* id) {
 	int followToken[] = { SEMICOLON_SIGN };
 	char* tokenBracketsOpen, * tokenParenthesesOpen, * currentTokenName;
 	current_token = next_token();
-	DataStrctuer* temp = getFromAllHashTables(id);
+	DataItem* tempDataItem = GetDataFromHashTables(id);
 	switch (current_token->kind) {
 	case BRACKETS_OPEN:
 	case EQUAL_OP:
 		fprintf(file, "STMT_ -> VAR_ = EXPR \n");
 		back_token();
-		eType t1;
-		int sizeOfVar = parse_VAR_(file);
-		if (temp == NULL || temp->job == Function)
+		ItemType tempItemType1;
+		int resultOfParser = parse_VAR_(file);
+		if (tempDataItem == NULL || tempDataItem->role == Function)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s dosen't exists\n", current_token->lineNumber, id);
-			t1 = Error;
+			fprintf(SemanticFilePtr, "Problem! In line %d, the id %s dosen't exists\n", current_token->lineNumber, id);
+			tempItemType1 = Error;
 		}
-		else if (temp->job == Var && sizeOfVar != -1)
+		else if (tempDataItem->role == Var && resultOfParser != -1)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s isn't var\n", current_token->lineNumber, temp->name);
-			t1 = Error;
+			fprintf(SemanticFilePtr, "Problem! In line %d, the id %s isn't variable\n", current_token->lineNumber, tempDataItem->name);
+			tempItemType1 = Error;
 		}
-		else if (temp->job == Arr && sizeOfVar == -1)
+		else if (tempDataItem->role == Arr && resultOfParser == -1)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s isn't arr\n", current_token->lineNumber, temp->name);
-			t1 = Error;
+			fprintf(SemanticFilePtr, "Problem! In line %d, the id %s isn't an array\n", current_token->lineNumber, tempDataItem->name);
+			tempItemType1 = Error;
 		}
-		else if (temp->job == Arr && temp->dimnestion != sizeOfVar)
+		else if (tempDataItem->role == Arr && tempDataItem->dimnestion != resultOfParser)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s dimnesion is not equal\n", current_token->lineNumber, temp->name);
-			t1 = Error;
+			fprintf(SemanticFilePtr, "Problem! In line %d, id %s dimnesion is not the same\n", current_token->lineNumber, tempDataItem->name);
+			tempItemType1 = Error;
 		}
 		else
 		{
-			temp->usedOrImplemented = 1;
-			t1 = temp->type;
+			tempDataItem->isImplemented = 1;
+			tempItemType1 = tempDataItem->type;
 		}
 		tokenMatcher(EQUAL_OP, file);
-		eType t2 = parse_EXPR(file);
-		if (t1 == Intt && t2 == Floatt)
+		ItemType tempItemType2 = parse_EXPR(file);
+		if (tempItemType1 == Intt && tempItemType2 == Floatt)
 		{
-			fprintf(semanticOutPut, "Line - %d | left side is Integer when right side is floatt\n", current_token->lineNumber, temp->name);
-
+			fprintf(SemanticFilePtr, "Problem! In line %d, left side is Integer when right side is Float\n", current_token->lineNumber);
 		}
-
 		break;
 	case PARENTHESES_OPEN:
 		fprintf(file, "STMT_ -> ( ARGS ) \n");
-		int num = parse_ARGS(file);
+		int resultOfParser2 = parse_ARGS(file);
 		tokenMatcher(PARENTHESES_CLOSE, file);
-		if (temp == NULL || temp->job != Function)
+		if (tempDataItem == NULL || tempDataItem->role != Function)
 		{
-			fprintf(semanticOutPut, "Line - %d | function %s dosen't exists\n", current_token->lineNumber, id);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the function %s dosen't exists\n", current_token->lineNumber, id);
 			return;
 		}
-		int size = temp->params == NULL ? 0 : arraylist_size(temp->params);
-		if (size != num)
+		int ParamListSize = tempDataItem->params == NULL ? 0 : ArrayListSize(tempDataItem->params);
+		if (ParamListSize != resultOfParser2)
 		{
-			fprintf(semanticOutPut, "Line - %d | function %s dosen't exists\n", current_token->lineNumber, temp->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the function %s dosen't exists\n", current_token->lineNumber, tempDataItem->name);
 			return Error;
 		}
 		break;
@@ -879,7 +853,7 @@ void parse_STMT_(FILE* file, char* id) {
 	}
 }
 
-eType parse_FACTOR(FILE* file) {
+ItemType parse_FACTOR(FILE* file) {
 	int followToken[] = { ARGUMENT_OPR_MULTIPLICATION, PARENTHESES_CLOSE, COMMA_SIGN, SEMICOLON_SIGN , OP_E,
 	OP_G,OP_GE,OP_L,OP_LE,OP_NE , CURLY_BRACES_CLOSE };
 	char* tokenOtherID, *tokenIntNum, *tokenFloatNum,* tokenZeroNum, * tokenParenthesesClose, * currentTokenName;
@@ -890,7 +864,6 @@ eType parse_FACTOR(FILE* file) {
 		return parse_MOMO(file,current_token->lexeme);
 		break;
 	case INT_NUMBER:
-	
 		fprintf(file, "FACTOR -> int_num \n");
 		return Intt;
 	case FLOAT_NUMBER:
@@ -898,9 +871,9 @@ eType parse_FACTOR(FILE* file) {
 		return Floatt;
 	case PARENTHESES_OPEN:
 		fprintf(file, "FACTOR -> ( EXPR )\n");
-		eType t1 = parse_EXPR(file);
+		ItemType tempItemType = parse_EXPR(file);
 		tokenMatcher(PARENTHESES_CLOSE, file);
-		return t1;
+		return tempItemType;
 	default:
 		defineToketToName(OTHER_ID, &tokenOtherID);
 		defineToketToName(INT_NUMBER, &tokenIntNum);
@@ -915,31 +888,31 @@ eType parse_FACTOR(FILE* file) {
 	}
 }
 
-eType parse_MOMO(FILE* file, char* id) {
+ItemType parse_MOMO(FILE* file, char* id) {
 	int followToken[] = { ARGUMENT_OPR_MULTIPLICATION, ARGUMENT_OPR_PLUS , PARENTHESES_CLOSE, 
 		COMMA_SIGN, SEMICOLON_SIGN,BRACKETS_CLOSE,CURLY_BRACES_CLOSE , OP_E,
 	OP_G,OP_GE,OP_L,OP_LE,OP_NE };
 	char* tokenARGMulti, * currentTokenName, tokenOpE, tokenOpLE, tokenOpNE, tokenOpL, tokenOpGE, tokenOpG,
 		tokenCurlyClose, tokenBracketsClose, tokenSemiColon, tokenComma, tokenParentesisClose;
 	current_token = next_token();
-	DataStrctuer* temp = getFromAllHashTables(id);
+	DataItem* tempDataItem = GetDataFromHashTables(id);
 	switch (current_token->kind) {
 	case PARENTHESES_OPEN:
 		fprintf(file, "MOMO-> ( ARGS )\n");
-		int num=	parse_ARGS(file);
+		int resultOfParser = parse_ARGS(file);
 		tokenMatcher(PARENTHESES_CLOSE, file);
-		if (temp == NULL || temp->job != Function)
+		if (tempDataItem == NULL || tempDataItem->role != Function)
 		{
-			fprintf(semanticOutPut, "Line - %d | function %s dosen't exists\n", current_token->lineNumber, id);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the function %s dosen't exists\n", current_token->lineNumber, id);
 			return Error;
 		}
-		int size = temp->params == NULL ? 0 : arraylist_size(temp->params);
-		if (size != num)
+		int ParamListSize = tempDataItem->params == NULL ? 0 : ArrayListSize(tempDataItem->params);
+		if (ParamListSize != resultOfParser)
 		{
-			fprintf(semanticOutPut, "Line - %d | function %s dosen't exists\n", current_token->lineNumber, temp->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the function %s dosen't exists\n", current_token->lineNumber, tempDataItem->name);
 			return Error;
 		}
-		return temp->type;
+		return tempDataItem->type;
 	case ARGUMENT_OPR_MULTIPLICATION:
 	case ARGUMENT_OPR_PLUS:
 	case CURLY_BRACES_CLOSE:
@@ -957,29 +930,29 @@ eType parse_MOMO(FILE* file, char* id) {
 	case EQUAL_OP:
 		fprintf(file, "MOMO-> VAR_\n");
 		back_token();
-		int sizeOfVar = parse_VAR_(file);
-		if (temp == NULL || temp->job == Function)
+		int resultOfParser2 = parse_VAR_(file);
+		if (tempDataItem == NULL || tempDataItem->role == Function)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s dosen't exists\n", current_token->lineNumber, id);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the id %s dosen't exists\n", current_token->lineNumber, id);
 			return Error;
 		}
-		if (temp->job == Var && sizeOfVar != -1)
+		if (tempDataItem->role == Var && resultOfParser2 != -1)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s isn't var\n", current_token->lineNumber, temp->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the id %s isn't variable\n", current_token->lineNumber, tempDataItem->name);
 			return Error;
 		}
-		else if (temp->job == Arr && sizeOfVar == -1)
+		else if (tempDataItem->role == Arr && resultOfParser2 == -1)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s isn't arr\n", current_token->lineNumber, temp->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the id %s isn't an array\n", current_token->lineNumber, tempDataItem->name);
 			return Error;
 		}
-		else if (temp->job == Arr && temp->dimnestion != sizeOfVar)
+		else if (tempDataItem->role == Arr && tempDataItem->dimnestion != resultOfParser2)
 		{
-			fprintf(semanticOutPut, "Line - %d | id %s dimnesion is not equal\n", current_token->lineNumber, temp->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d, the id %s dimnesion is not equal\n", current_token->lineNumber, tempDataItem->name);
 			return Error;
 		}
-		temp->usedOrImplemented = 1;
-		return temp->type;
+		tempDataItem->isImplemented = 1;
+		return tempDataItem->type;
 	default:
 		defineToketToName(ARGUMENT_OPR_MULTIPLICATION, &tokenARGMulti);
 		defineToketToName(CURLY_BRACES_CLOSE, &tokenCurlyClose);
@@ -1003,14 +976,14 @@ eType parse_MOMO(FILE* file, char* id) {
 
 int parse_ARG_LIST_(FILE* file) {
 	int followToken[] = { PARENTHESES_CLOSE };
-	char*  tokenComma,  * currentTokenName;
+	char* tokenComma,* currentTokenName;
 	current_token = next_token();
 	switch (current_token->kind)
 	{
 	case COMMA_SIGN:
 		fprintf(file, "ARG_LIST_ -> , EXPR ARG_LIST_ \n");
 		parse_EXPR(file);
-		return  parse_ARG_LIST_(file)+1;
+		return parse_ARG_LIST_(file)+1;
 	case PARENTHESES_CLOSE:
 		fprintf(file, "ARG_LIST_ -> epsilon\n");
 		back_token();
@@ -1031,7 +1004,6 @@ int parse_ARG_LIST(FILE* file) {
 	return parse_ARG_LIST_(file) + 1;
 }
 
-
 int parse_ARGS(FILE* file) {
 	int followToken[] = { PARENTHESES_CLOSE };
 	char* tokenOtherID, * tokenIntNum, * tokenFloatNum, * tokenZeroNum, * tokenParenthesesClose, *tokenParenthesesOpen, * currentTokenName;
@@ -1039,7 +1011,6 @@ int parse_ARGS(FILE* file) {
 	switch (current_token->kind) {
 	case OTHER_ID:
 	case INT_NUMBER:
-
 	case FLOAT_NUMBER:
 	case PARENTHESES_OPEN:
 		fprintf(file, "ARGS -> ARG_LIST\n");
@@ -1064,7 +1035,7 @@ int parse_ARGS(FILE* file) {
 	}
 }
 		
-eType parse_RETURN_STMT_(FILE* file) {
+ItemType parse_RETURN_STMT_(FILE* file) {
 	int followToken[] = { SEMICOLON_SIGN  , CURLY_BRACES_CLOSE};
 	char* tokenOtherID, * tokenIntNum,* tokenCurlyClose ,* tokenFloatNum, * tokenZeroNum, * tokenParenthesesOpen, * currentTokenName;
 	current_token = next_token();
@@ -1073,7 +1044,6 @@ eType parse_RETURN_STMT_(FILE* file) {
 	case FLOAT_NUMBER:
 	case OTHER_ID:
 	case PARENTHESES_OPEN:
-	
 		fprintf(file, "RETURN_STMT_ -> EXPR\n");
 		back_token();
 		return parse_EXPR(file);
@@ -1104,9 +1074,9 @@ int parse_VAR_(FILE* file) {
 	switch (current_token->kind) {
 	case BRACKETS_OPEN:
 		fprintf(file, "VAR_ -> [ EXPR_LIST ]\n");
-	int num=parse_EXPR_LIST(file);
+		int resultOfParser=parse_EXPR_LIST(file);
 		tokenMatcher(BRACKETS_CLOSE, file);
-		return num;
+		return resultOfParser;
 	case ARGUMENT_OPR_MULTIPLICATION:
 	case ARGUMENT_OPR_PLUS:
 	case PARENTHESES_CLOSE:
@@ -1150,7 +1120,6 @@ int parse_EXPR_LIST_(FILE* file) {
 	switch (current_token->kind) {
 	case COMMA_SIGN:
 		fprintf(file, "EXPR_LIST_ -> , EXPR EXPR_LIST_\n" );
-
 		parse_EXPR(file);
 		return parse_EXPR_LIST_(file)+1;
 	case BRACKETS_CLOSE:
@@ -1167,14 +1136,12 @@ int parse_EXPR_LIST_(FILE* file) {
 	}
 }
 
-
 void parse_CONDITION(FILE* file) {
 	int followToken[] = { PARENTHESES_CLOSE };
 	char* tokenOtherID, * tokenIntNum, * tokenFloatNum, * tokenZeroNum, * tokenParenthesesOpen, * currentTokenName, * tokenOPLE, * tokenOPL, * tokenOPGE, * tokenOPG, * tokenOPE, * tokenOPNE;
 	fprintf(file, "CONDITION -> EXPR rel_op EXPR\n");
 	parse_EXPR(file);
 	current_token = next_token();
-
 	switch (current_token->kind)
 	{
 		case OP_LE:	
@@ -1199,26 +1166,14 @@ void parse_CONDITION(FILE* file) {
 	}
 }
 
-eType parse_EXPR(FILE* file) {
+ItemType parse_EXPR(FILE* file) {
 	fprintf(file, "EXPR -> TERM EXPR_\n");
-	eType t1 = parse_TERM(file);
-	eType t2 = parse_EXPR_(file);
-
-	if (t1 == Error || t2 == Error)
-	{
-		return Error;
-	}
-	else if (t1 == Floatt || t2 == Floatt)
-	{
-		return Floatt;
-	}
-	else
-	{
-		return Intt;
-	}
+	ItemType tempItemType1 = parse_TERM(file);
+	ItemType tempItemType2 = parse_EXPR_(file);
+	return ItemCompare(tempItemType1, tempItemType2);
 }			
 
-eType parse_EXPR_(FILE* file) {
+ItemType parse_EXPR_(FILE* file) {
 	int followToken[] = {  PARENTHESES_CLOSE, COMMA_SIGN, SEMICOLON_SIGN , OP_E,
 	OP_G,OP_GE,OP_L,OP_LE,OP_NE , CURLY_BRACES_CLOSE};
 	char * currentTokenName, tokenOpE, tokenOpLE, tokenOpNE, tokenOpL, tokenOpGE, tokenOpG,
@@ -1227,20 +1182,9 @@ eType parse_EXPR_(FILE* file) {
 	switch (current_token->kind) {
 	case ARGUMENT_OPR_PLUS:
 		fprintf(file, "EXPR_ -> + TERM EXPR_\n");
-		eType t1 = parse_TERM(file);
-		eType t2 = parse_EXPR_(file);
-		if (t1 == Error || t2 == Error)
-		{
-			return Error;
-		}
-		else if (t1 == Floatt || t2 == Floatt)
-		{
-			return Floatt;
-		}
-		else
-		{
-			return Intt;
-		}
+		ItemType tempItemType1 = parse_TERM(file);
+		ItemType tempItemType2 = parse_EXPR_(file);
+		return ItemCompare(tempItemType1, tempItemType2);
 	case PARENTHESES_CLOSE :
 	case CURLY_BRACES_CLOSE :
 	case COMMA_SIGN:
@@ -1273,7 +1217,7 @@ eType parse_EXPR_(FILE* file) {
 	}
 }
 
-eType parse_TERM_(FILE* file) {
+ItemType parse_TERM_(FILE* file) {
 	int followToken[] = { ARGUMENT_OPR_PLUS , PARENTHESES_CLOSE, COMMA_SIGN, SEMICOLON_SIGN,
 		BRACKETS_CLOSE,CURLY_BRACES_CLOSE , OP_E,
 	OP_G,OP_GE,OP_L,OP_LE,OP_NE};
@@ -1283,21 +1227,9 @@ eType parse_TERM_(FILE* file) {
 	switch (current_token->kind) {
 	case ARGUMENT_OPR_MULTIPLICATION:
 		fprintf(file, "TERM_ -> * FACTOR TERM_\n");
-		
-		eType t1 = parse_FACTOR(file);
-		eType t2 = parse_TERM_(file);
-		if (t1 == Error || t2 == Error)
-		{
-			return Error;
-		}
-		else if (t1 == Floatt || t2 == Floatt)
-		{
-			return Floatt;
-		}
-		else
-		{
-			return Intt;
-		}
+		ItemType tempItemType1 = parse_FACTOR(file);
+		ItemType tempItemType2 = parse_TERM_(file);
+		return ItemCompare(tempItemType1, tempItemType2);
 	case ARGUMENT_OPR_PLUS:
 	case CURLY_BRACES_CLOSE:
 	case BRACKETS_CLOSE:
@@ -1334,16 +1266,20 @@ eType parse_TERM_(FILE* file) {
 	}
 }
 
-eType parse_TERM(FILE* file) {
+ItemType parse_TERM(FILE* file) {
 	fprintf(file, "TERM -> FACTOR TERM_\n");
-	eType t1 = parse_FACTOR(file);
-	eType t2 =  parse_TERM_(file);
+	ItemType tempItemType1 = parse_FACTOR(file);
+	ItemType tempItemType2 =  parse_TERM_(file);
+	return ItemCompare(tempItemType1, tempItemType2);
+}
 
-	if (t1 == Error || t2 == Error)
+ItemType ItemCompare(ItemType firstItem, ItemType secondItem)
+{
+	if (firstItem == Error || secondItem == Error)
 	{
 		return Error;
 	}
-	else if (t1 == Floatt || t2 == Floatt)
+	else if (firstItem == Floatt || secondItem == Floatt)
 	{
 		return Floatt;
 	}
@@ -1353,43 +1289,39 @@ eType parse_TERM(FILE* file) {
 	}
 }
 
-void createNewHashTable()
+void GenerateHashTable()
 {
-	hashtableHolder->size = hashtableHolder->size++;
-	hashtableHolder->tables[hashtableHolder->size] = hashtable_create();
-
+	HashCarrier->size = HashCarrier->size++;
+	HashCarrier->tables[HashCarrier->size] = HashTableCreate();
 }
 
-void popHashTable()
+void PopFromHashTable()
 {
-	hashtable* temp = hashtableHolder->tables[hashtableHolder->size--];
-	print_hashtable(temp);
-	free(temp);
+	HashTable* tempHashTable = HashCarrier->tables[HashCarrier->size--];
+	PrintHashTable(tempHashTable);
+	free(tempHashTable);
 }
 
-
-void insertToTopHashTable(DataStrctuer* data)
+void InsertToTopHashTable(DataItem* data)
 {
-	hashtable* temp = hashtableHolder->tables[hashtableHolder->size];
-	DataStrctuer* result = (DataStrctuer*)hashtable_get(temp, data->name);
-	if (result == NULL)
+	HashTable* tempHashTable = HashCarrier->tables[HashCarrier->size];
+	DataItem* tempDataItem = (DataItem*)HashTableGet(tempHashTable, data->name);
+	if (tempDataItem == NULL)
 	{
-		hashtable_set(temp, data->name, data);
+		HashTableSet(tempHashTable, data->name, data);
 	}
 	else
 	{
-		fprintf(semanticOutPut, "Line - %d | id %s is already exists\n", current_token->lineNumber, data->name);
+		fprintf(SemanticFilePtr, "Problem! In line %d, the id %s is already exists\n", current_token->lineNumber, data->name);
 	}
-
-
 }
 
-DataStrctuer* getFromAllHashTables(char* id)
+DataItem* GetDataFromHashTables(char* id)
 {
-	DataStrctuer* result = NULL;
-	for (int i = hashtableHolder->size; i >= 0; i--)
+	DataItem* result = NULL;
+	for (int i = HashCarrier->size; i >= 0; i--)
 	{
-		DataStrctuer* result = (DataStrctuer*)hashtable_get(hashtableHolder->tables[i], id);
+		DataItem* result = (DataItem*)HashTableGet(HashCarrier->tables[i], id);
 		if (result != NULL)
 		{
 			return result;
@@ -1399,24 +1331,22 @@ DataStrctuer* getFromAllHashTables(char* id)
 
 }
 
-
-
-void print_hashtable(hashtable* t)
+void PrintHashTable(HashTable* t)
 {
 	for (int i = 0; i < t->capacity; i++)
 	{
 		if (t->body[i].key != NULL)
 		{
-			DataStrctuer* temp = (DataStrctuer*)t->body[i].value;
-			if (temp->usedOrImplemented == 0)
+			DataItem* tempDataItem = (DataItem*)t->body[i].value;
+			if (tempDataItem->isImplemented == 0)
 			{
-				if (temp->job == Function)
+				if (tempDataItem->role == Function)
 				{
-					fprintf(semanticOutPut, "Line - %d | Function '%s' dosen't implemented\n", temp->lineNumber, temp->name);
+					fprintf(SemanticFilePtr, "Problem! In line %d, the function '%s' is not implemented\n", tempDataItem->lineNumber, tempDataItem->name);
 				}
 				else
 				{
-					fprintf(semanticOutPut, "Line - %d | id '%s' not used\n", temp->lineNumber, temp->name);
+					fprintf(SemanticFilePtr, "Problem! In line %d, the id %s is never used\n", tempDataItem->lineNumber, tempDataItem->name);
 
 				}
 			}
@@ -1425,14 +1355,13 @@ void print_hashtable(hashtable* t)
 	}
 }
 
-
-int checkForDuplicateParams(DataStrctuer* data)
+int isExistParam(DataItem* data)
 {
 	if (data->params == NULL)
 	{
 		return 0;
 	}
-	int size = arraylist_size(data->params);
+	int size = ArrayListSize(data->params);
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -1440,9 +1369,9 @@ int checkForDuplicateParams(DataStrctuer* data)
 
 			if (i != j)
 			{
-				if (strcmp(((DataStrctuer*)arraylist_get(data->params, i))->name, ((DataStrctuer*)arraylist_get(data->params, j))->name) == 0)
+				if (strcmp(((DataItem*)ArrayListGet(data->params, i))->name, ((DataItem*)ArrayListGet(data->params, j))->name) == 0)
 				{
-					fprintf(semanticOutPut, "Line - %d | duplicate param  - '%s' is already exists\n", current_token->lineNumber, ((DataStrctuer*)arraylist_get(data->params, i))->name);
+					fprintf(SemanticFilePtr, "Problem! In line %d, there are duplicate params : %s is already exists\n", current_token->lineNumber, ((DataItem*)ArrayListGet(data->params, i))->name);
 					return 1;
 				}
 			}
@@ -1451,38 +1380,32 @@ int checkForDuplicateParams(DataStrctuer* data)
 	return 0;
 }
 
-int checkTheFunctionSignature(DataStrctuer* data, DataStrctuer* data2)
+int FunctionDefinision(DataItem* DataItem1, DataItem* DataItem2)
 {
-	if (data->type != data2->type)
+	if (DataItem1->type != DataItem2->type)
 	{
-		fprintf(semanticOutPut, "Line - %d | function '%s' diffrent types\n", current_token->lineNumber, data->name);
+		fprintf(SemanticFilePtr, "Problem! In line %d, the function '%s' has diffrent types in definision and implementation\n", current_token->lineNumber, DataItem1->name);
 		return 0;
 	}
-	int size = data->params == NULL ? 0 : arraylist_size(data->params);
-	int size2 = data2->params == NULL ? 0 : arraylist_size(data2->params);
-	if (size != size2)
+	int size1 = DataItem1->params == NULL ? 0 : ArrayListSize(DataItem1->params);
+	int size2 = DataItem2->params == NULL ? 0 : ArrayListSize(DataItem2->params);
+	if (size1 != size2)
 	{
-		fprintf(semanticOutPut, "Line - %d | function '%s' diffrent length of params\n", current_token->lineNumber, data->name);
+		fprintf(SemanticFilePtr, "Problem! In line %d, function '%s' diffrent length of params\n", current_token->lineNumber, DataItem1->name);
 		return 0;
 	}
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size1; i++)
 	{
-		if (((DataStrctuer*)arraylist_get(data->params, i))->type != ((DataStrctuer*)arraylist_get(data2->params, i))->type)
+		if (((DataItem*)ArrayListGet(DataItem1->params, i))->type != ((DataItem*)ArrayListGet(DataItem2->params, i))->type)
 		{
-			fprintf(semanticOutPut, "Line - %d | function '%s' different params type\n", current_token->lineNumber, data->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d, function '%s' has different params type\n", current_token->lineNumber, DataItem1->name);
 			return 0;
 		}
-		if (((DataStrctuer*)arraylist_get(data->params, i))->job != ((DataStrctuer*)arraylist_get(data2->params, i))->job)
+		if (((DataItem*)ArrayListGet(DataItem1->params, i))->role != ((DataItem*)ArrayListGet(DataItem2->params, i))->role)
 		{
-			fprintf(semanticOutPut, "Line - %d | function '%s' different params job\n", current_token->lineNumber, data->name);
+			fprintf(SemanticFilePtr, "Problem! In line %d,the function '%s' has different params role\n", current_token->lineNumber, DataItem1->name);
 			return 0;
 		}
-
-
 	}
 	return 1;
-
-
-
-
 }

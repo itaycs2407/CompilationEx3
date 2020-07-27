@@ -3,13 +3,13 @@
 #include "Arrlist.h"
 #include "hashtable.h"
 
-typedef enum eType
+typedef enum ItemType
 {
 	Intt,
 	Floatt,
 	Voidd,
 	Error
-}eType;
+}ItemType;
 
 
 typedef enum eJob
@@ -17,20 +17,19 @@ typedef enum eJob
 	Function,
 	Var,
 	Arr
-
 }eJob;
 
 
-typedef struct DataStrctuer
+typedef struct DataItem
 {
 	int lineNumber;
-	int usedOrImplemented;
-	eJob job;
-	eType type;
+	int isImplemented;
+	eJob role;
+	ItemType type;
 	char* name;
-	arraylist* params;
+	ArrayList* params;
 	int dimnestion;
-}DataStrctuer;
+}DataItem;
 
 
 

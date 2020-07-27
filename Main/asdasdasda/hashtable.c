@@ -40,7 +40,7 @@ unsigned long hashtable_hash(char* str)
 /**
  * Find an available slot for the given key, using linear probing.
  */
-unsigned int hashtable_find_slot(hashtable* t, char* key)
+unsigned int hashtable_find_slot(HashTable* t, char* key)
 {
 	int index = hashtable_hash(key) % t->capacity;
 	while (t->body[index].key != NULL && strcmp(t->body[index].key, key) != 0) {
@@ -52,7 +52,7 @@ unsigned int hashtable_find_slot(hashtable* t, char* key)
 /**
  * Return the item associated with the given key, or NULL if not found.
  */
-void* hashtable_get(hashtable* t, char* key)
+void* HashTableGet(HashTable* t, char* key)
 {
 	int index = hashtable_find_slot(t, key);
 	if (t->body[index].key != NULL) {
@@ -66,7 +66,7 @@ void* hashtable_get(hashtable* t, char* key)
 /**
  * Assign a value to the given key in the table.
  */
-void hashtable_set(hashtable* t, char* key, void* value)
+void HashTableSet(HashTable* t, char* key, void* value)
 {
 	int index = hashtable_find_slot(t, key);
 	if (t->body[index].key != NULL) {
@@ -89,7 +89,7 @@ void hashtable_set(hashtable* t, char* key, void* value)
 /**
  * Remove a key from the table
  */
-void hashtable_remove(hashtable* t, char* key)
+void hashtable_remove(HashTable* t, char* key)
 {
 	int index = hashtable_find_slot(t, key);
 	if (t->body[index].key != NULL) {
@@ -102,9 +102,9 @@ void hashtable_remove(hashtable* t, char* key)
 /**
  * Create a new, empty hashtable
  */
-hashtable* hashtable_create()
+HashTable* HashTableCreate()
 {
-	hashtable* new_ht = malloc(sizeof(hashtable));
+	HashTable* new_ht = malloc(sizeof(HashTable));
 	new_ht->size = 0;
 	new_ht->capacity = HASHTABLE_INITIAL_CAPACITY;
 	new_ht->body = hashtable_body_allocate(new_ht->capacity);
@@ -123,7 +123,7 @@ hashtable_entry* hashtable_body_allocate(unsigned int capacity)
 /**
  * Resize the allocated memory.
  */
-void hashtable_resize(hashtable* t, unsigned int capacity)
+void hashtable_resize(HashTable* t, unsigned int capacity)
 {
 	assert(capacity >= t->size);
 	unsigned int old_capacity = t->capacity;
@@ -134,7 +134,7 @@ void hashtable_resize(hashtable* t, unsigned int capacity)
 	// Copy all the old values into the newly allocated body
 	for (int i = 0; i < old_capacity; i++) {
 		if (old_body[i].key != NULL) {
-			hashtable_set(t, old_body[i].key, old_body[i].value);
+			HashTableSet(t, old_body[i].key, old_body[i].value);
 		}
 	}
 }
@@ -142,7 +142,7 @@ void hashtable_resize(hashtable* t, unsigned int capacity)
 /**
  * Destroy the table and deallocate it from memory. This does not deallocate the contained items.
  */
-void hashtable_destroy(hashtable* t)
+void hashtable_destroy(HashTable* t)
 {
 	free(t->body);
 	free(t);

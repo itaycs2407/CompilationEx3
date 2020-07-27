@@ -2110,20 +2110,19 @@ int CheckFile(char* inputFileName, int num)
 	fclose(yyout);
 	fclose(yyout2);
 	return 1;
-	system("pause");
 }
+
 int PrintMenu()
 {
 	int inputFromUser = 0;
 	do
 	{
-
 		printf("Please enter your choise :     \n");
 		printf("-------------------------------\n");
 		printf("1. c:\\temp\\test1.txt         \n");
 		printf("2. c:\\temp\\test2.txt         \n");
-		printf("3. run both files              \n");
-		printf("4. exit                        \n");
+	//	printf("3. run both files              \n");
+		printf("3. exit                        \n");
 		printf("enter your choise :            \n");
 		scanf_s("%d", &inputFromUser);
 	} while ((inputFromUser > 4) || (inputFromUser < 0));
@@ -2143,7 +2142,7 @@ int main(int argc, char** argv)
 		printf("Start lexing file: c:\\temp\\test1.txt ..... please wait \n");
 		if (CheckFile("c:\\temp\\test1.txt", 1))
 		{
-			printf("The output file is ready, located in c:\\temp....\n");
+			printf("The output files are ready, located in c:\\temp....\n");
 		}
 		else
 		{
@@ -2157,7 +2156,7 @@ int main(int argc, char** argv)
 		printf("Start lexing file: c:\\temp\\test2.txt ..... please wait \n");
 		if (CheckFile("c:\\temp\\test2.txt", 2))
 		{
-			printf("The output file is ready, located in c:\\temp.  \n");
+			printf("The output files are ready, located in c:\\temp.  \n");
 		}
 		else
 		{
@@ -2165,13 +2164,13 @@ int main(int argc, char** argv)
 		}
 		system("pause");
 		break;
-	}
+	}/*
 	case 3:
 	{
 		printf("Start lexing file: c:\\temp\\test1.txt ..... please wait \n");
 		if (CheckFile("c:\\temp\\test1.txt", 1))
 		{
-			printf("The output file is ready, located in c:\\temp.  \n");
+			printf("The output files are ready, located in c:\\temp.  \n");
 		}
 		else
 		{
@@ -2180,7 +2179,7 @@ int main(int argc, char** argv)
 		printf("Start lexing file: c:\\temp\\test2.txt ..... please wait \n");
 		if (CheckFile("c:\\temp\\test2.txt", 2))
 		{
-			printf("The output file is ready, located in c:\\temp.  \n");
+			printf("The output files are ready, located in c:\\temp.  \n");
 		}
 		else
 		{
@@ -2188,8 +2187,8 @@ int main(int argc, char** argv)
 		}
 		system("pause");
 		break;
-	}
-	case 4:
+	}*/
+	case 3:
 	{
 		system("pause");
 		exit(0);
